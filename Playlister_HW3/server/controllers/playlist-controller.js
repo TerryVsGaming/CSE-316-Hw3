@@ -61,6 +61,26 @@ deleteSong = async(req,res) => {
     return res.status(200).json({ success: true, playlist: list})
 }
 
+editSong = async(req,res) => {
+    const list = await Playlist.findOne({_id:req.params.id})
+    if(list == null){
+        return res.status(400).json({ success: false, message: "Unknown Playlist" })
+    }
+    const body = req.body;
+    console.log("edit Song body: " + body);
+
+    if (!body) {
+        return res.status(400).json({
+            success: false,
+            error: 'You must provide a Song',
+        })
+    }
+    const song = (body); //JSON.parse
+    list.songs[req.params.position] = song;
+    await list.save()
+    return res.status(200).json({ success: true, playlist: list})
+}
+
 getPlaylistById = async (req, res) => {
     await Playlist.findOne({ _id: req.params.id }, (err, list) => {
         if (err) {
@@ -115,5 +135,6 @@ module.exports = {
     getPlaylistPairs,
     getPlaylistById,
     createSong,
-    deleteSong
+    deleteSong,
+    editSong
 }
