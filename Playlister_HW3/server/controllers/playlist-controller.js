@@ -51,6 +51,15 @@ createSong = async(req,res) => {
     return res.status(200).json({ success: true, playlist: list, songId: list.songs.length-1})
 }
 
+deleteSong = async(req,res) => {
+    const list = await Playlist.findOne({_id:req.params.id})
+    if(list == null){
+        return res.status(400).json({ success: false, message: "Unknown Playlist" })
+    }
+    list.songs.splice(req.params.position, 1);
+    await list.save()
+    return res.status(200).json({ success: true, playlist: list})
+}
 
 getPlaylistById = async (req, res) => {
     await Playlist.findOne({ _id: req.params.id }, (err, list) => {
@@ -105,5 +114,6 @@ module.exports = {
     getPlaylists,
     getPlaylistPairs,
     getPlaylistById,
-    createSong
+    createSong,
+    deleteSong
 }
