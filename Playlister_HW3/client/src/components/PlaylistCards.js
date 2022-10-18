@@ -7,7 +7,8 @@ import { GlobalStoreContext } from '../store'
     happens when we are on the proper route.
     
     @author McKilla Gorilla
-*/
+*///
+
 function PlaylistCards() {
     const { store } = useContext(GlobalStoreContext);
     store.history = useHistory();
