@@ -19,7 +19,7 @@ const { store } = useContext(GlobalStoreContext);
         store.deleteList(position)
         hideDeletePlaylistModal();
     }
-
+//
         return (
             <div 
                 class="modal" 
@@ -28,7 +28,7 @@ const { store } = useContext(GlobalStoreContext);
                     <div class="modal-dialog" id='verify-delete-playlist-root'>
                         <div class="modal-north">
                          Delete this playlist?
-                         
+
                         </div>
                         <div class="modal-center">
                             <div class="modal-center-content">

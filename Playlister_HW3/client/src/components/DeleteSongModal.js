@@ -19,7 +19,7 @@ const { store } = useContext(GlobalStoreContext);
         store.deleteSongTransaction(position)
         hideDeleteSongModal();
     }
-
+//
         return (
             <div 
                 class="modal" 
