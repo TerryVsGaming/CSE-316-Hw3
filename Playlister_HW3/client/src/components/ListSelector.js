@@ -30,11 +30,11 @@ const ListSelector = () => {
     }
     return (
         
-        <div id="playlist-selector"> 
-            <div id="list-selector-list" display="flex" align-items = "center">
+        <div id="playlist-selector" > 
+            <div id="list-selector-list" display="flex" align-items = "center" >
                 
             <div id="playlist-selector-heading" >
-            Your Lists
+                      
                 <input
                 
                     type="button"
@@ -42,8 +42,9 @@ const ListSelector = () => {
                     onClick={handleCreateNewList}
                     className="playlister-button"
                     value="+" />
-              
-            </div>                
+                 Add to Your Lists
+            </div>    
+                        
             {listCard}
             </div>
             
