@@ -38,6 +38,7 @@ function EditToolbar() {
     let redoClass = "toolbar-button";
     let closeClass = "toolbar-button";
 
+    //foolproof
     let canAddSong = store.currentList !== null;
     let canUndo = store.hasTransactionToUndo();
     let canRedo = store.hasTransactionToRedo();
