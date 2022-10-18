@@ -12,7 +12,7 @@ function PlaylistCards() {
     const { store } = useContext(GlobalStoreContext);
     store.history = useHistory();
     if (store.currentList == null && store.history.length !== 0){
-       store.currentList = store.history.location.state
+      store.currentList = store.history.location.state
     }
     return (
         <div id="playlist-cards">

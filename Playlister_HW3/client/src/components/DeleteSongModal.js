@@ -25,13 +25,13 @@ const { store } = useContext(GlobalStoreContext);
                 class="modal" 
                 id="delete-song-modal" 
                 data-animation="slideInOutLeft">
-                    <div class="modal-root" id='verify-delete-song-root'>
+                    <div class="modal-dialog" id='verify-delete-song-root'>
                         <div class="modal-north">
                          Delete <span id = "delete-song-title"></span>?
                         </div>
                         <div class="modal-center">
                             <div class="modal-center-content">
-                            Are you sure you wish to permanently delete the song?
+                            Are you sure you wish to permanently delete this song?
                         </div>
                         <input type = "hidden" id = "delete-song-position"/>
                         </div>

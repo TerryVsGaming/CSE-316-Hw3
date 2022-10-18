@@ -160,17 +160,23 @@ input {
   left: 0;
   right: 0;
   bottom: 0;
-  display: flex;
+   display: flex;
   align-items: center;
   justify-content: center;
   padding: 1rem;
-  background: var(--black);
+ /* background: var(--black);*/
   color: var(--swatch-text);
-  cursor: pointer;
+  /*cursor: pointer;*/
   visibility: hidden;
   opacity: 0;
   transition: all 0.35s ease-in;
   font-family: var(--font-primary);
+
+  
+ border-width:2px;
+ border-color:black;
+ border-style: solid;
+ box-shadow: 5px 10px #888888; 
 }
 
 .modal.is-visible {
@@ -192,6 +198,7 @@ input {
 
 .modal-dialog > * {
   padding: 1rem;
+
 }
 
 .modal-header,

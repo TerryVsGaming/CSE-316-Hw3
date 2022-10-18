@@ -25,9 +25,10 @@ const { store } = useContext(GlobalStoreContext);
                 class="modal" 
                 id="delete-playlist-modal" 
                 data-animation="slideInOutLeft">
-                    <div class="modal-root" id='verify-delete-playlist-root'>
+                    <div class="modal-dialog" id='verify-delete-playlist-root'>
                         <div class="modal-north">
                          Delete this playlist?
+                         
                         </div>
                         <div class="modal-center">
                             <div class="modal-center-content">

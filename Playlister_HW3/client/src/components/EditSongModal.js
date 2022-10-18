@@ -43,7 +43,7 @@ const { store } = useContext(GlobalStoreContext);
                 class="modal" 
                 id="edit-song-modal" 
                 data-animation="slideInOutLeft">
-                    <div class="modal-root" id='verify-edit-song-root'>
+                    <div class="modal-dialog" id='verify-edit-song-root'>
                         <div class="modal-north">
                             Edit Song
                         </div>
