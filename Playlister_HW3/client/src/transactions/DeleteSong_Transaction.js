@@ -8,6 +8,7 @@ import jsTPS_Transaction from "../common/jsTPS.js"
  * @author McKilla Gorilla
  * @author ?
  */
+//
 export default class DeleteSong_Transaction extends jsTPS_Transaction {
     constructor(initStore, initOldSongIndex, initOldSong) {
         super();
