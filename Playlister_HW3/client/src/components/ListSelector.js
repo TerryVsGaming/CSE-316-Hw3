@@ -29,20 +29,24 @@ const ListSelector = () => {
         ))
     }
     return (
-        <div id="playlist-selector">
-            <div id="list-selector-list">
-            <div id="playlist-selector-heading">
+        
+        <div id="playlist-selector"> 
+            <div id="list-selector-list" display="flex" align-items = "center">
+                
+            <div id="playlist-selector-heading" >
+            Your Lists
                 <input
+                
                     type="button"
                     id="add-list-button"
                     onClick={handleCreateNewList}
                     className="playlister-button"
                     value="+" />
-                Your Lists
-            </div>                {
-                    listCard
-                }
+              
+            </div>                
+            {listCard}
             </div>
+            
         </div>)
 }
 

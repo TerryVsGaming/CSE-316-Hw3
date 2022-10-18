@@ -25,19 +25,22 @@ createPlaylist = (req, res) => {
 
     playlist
         .save()
-        .then(() => {
+        .then(() => { 
+            
             return res.status(201).json({
-                success: true,
-                playlist: playlist,
-                message: 'Playlist Created!',
-            })
-        })
+                 success: true,
+                 playlist: playlist,
+                 message: 'Playlist Created!',
+             })
+            }
+        )
         .catch(error => {
             return res.status(400).json({
                 error,
                 message: 'Playlist Not Created!',
             })
         })
+
 }
 
 createSong = async(req,res) => {
@@ -61,6 +64,18 @@ deleteSong = async(req,res) => {
     return res.status(200).json({ success: true, playlist: list})
 }
 
+deletePlaylist = async(req,res) => {
+    const list = await Playlist.findOne({_id:req.params.id})
+    if(list == null){
+        return res.status(400).json({ success: false, message: "Unknown Playlist" })
+    }
+    await Playlist.deleteOne(list)
+    return res.status(200).json({ success: true})
+}
+
+
+
+
 editSong = async(req,res) => {
     const list = await Playlist.findOne({_id:req.params.id})
     if(list == null){
@@ -75,7 +90,7 @@ editSong = async(req,res) => {
             error: 'You must provide a Song',
         })
     }
-    const song = (body); //JSON.parse
+    const song = (body); //JSON.parse   
     list.songs[req.params.position] = song;
     await list.save()
     return res.status(200).json({ success: true, playlist: list})
@@ -90,6 +105,26 @@ getPlaylistById = async (req, res) => {
         return res.status(200).json({ success: true, playlist: list })
     }).catch(err => console.log(err))
 }
+
+editPlaylist = async (req,res) => {
+    const filter = {_id: req.params.id};
+    // this option instructs the method to create a document if no documents match the filter
+    const options = { upsert: false};
+    // create a document that sets the plot of the movie
+    const updateDoc = {
+      $set:  req.body  
+    };
+    await Playlist.updateOne(filter, updateDoc, options, (err,list) =>{
+        if (err) {
+            return res.status(400).json({ success: false, error: err })
+        }
+
+        return res.status(200).json({ success: true}) 
+    }).catch(err => console.log(err))
+    
+}
+
+
 getPlaylists = async (req, res) => {
     await Playlist.find({}, (err, playlists) => {
         if (err) {
@@ -136,5 +171,7 @@ module.exports = {
     getPlaylistById,
     createSong,
     deleteSong,
-    editSong
+    editSong,
+    deletePlaylist,
+    editPlaylist
 }

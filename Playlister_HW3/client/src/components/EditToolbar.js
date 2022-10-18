@@ -13,6 +13,11 @@ function EditToolbar() {
 
     let enabledButtonClass = "playlister-button";
 
+    function addSong(){
+        store.addSongTransaction();
+    }
+
+
     function handleUndo() {
         store.undo();
     }
@@ -27,38 +32,58 @@ function EditToolbar() {
     if (store.isListNameEditActive) {
         editStatus = true;
     }
+
+    let addSongClass = "toolbar-button";
+    let undoClass = "toolbar-button";
+    let redoClass = "toolbar-button";
+    let closeClass = "toolbar-button";
+
+    let canAddSong = store.currentList !== null;
+    let canUndo = store.hasTransactionToUndo();
+    let canRedo = store.hasTransactionToRedo();
+    let canClose = store.currentList !== null;
+
     return (
         <span id="edit-toolbar">
             <input
                 type="button"
                 id='add-song-button'
-                disabled={editStatus}
+                //disabled={editStatus}
                 value="+"
-                className={enabledButtonClass}
+               // className={enabledButtonClass}
+               className = {addSongClass}
+                onClick = {addSong}
+                 disabled = {!canAddSong}
             />
             <input
                 type="button"
                 id='undo-button'
-                disabled={editStatus}
+                //disabled={editStatus}
                 value="⟲"
-                className={enabledButtonClass}
+               // className={enabledButtonClass}
+               className = {undoClass}
                 onClick={handleUndo}
+                disabled = {!canUndo}
             />
             <input
                 type="button"
                 id='redo-button'
-                disabled={editStatus}
+                //disabled={editStatus}
                 value="⟳"
-                className={enabledButtonClass}
+             //   className={enabledButtonClass}
+             className = {redoClass}
                 onClick={handleRedo}
+                disabled = {!canRedo}
             />
             <input
                 type="button"
                 id='close-button'
-                disabled={editStatus}
+               // disabled={editStatus}
                 value="&#x2715;"
-                className={enabledButtonClass}
+               // className={enabledButtonClass}
+               className = {closeClass}
                 onClick={handleClose}
+                disabled = {!canClose}
             />
         </span>);
 }

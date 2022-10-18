@@ -26,6 +26,22 @@ function ListCard(props) {
         }
     }
 
+    function showDeletePlaylist(event){
+        event.stopPropagation();
+        let modal = document.getElementById("delete-playlist-modal")
+        let id = event.target.id.replace("delete-list-","")
+        let id2 = document.getElementById("delete-playlist-position");  
+        id2.value = id
+
+        let title = document.getElementById("list-card-text-"+id).textContent
+        document.getElementById("delete-playlist-title").textContent = title; 
+        
+        
+        modal.classList.add("is-visible");
+
+        
+    }
+
     function handleToggleEdit(event) {
         event.stopPropagation();
         toggleEdit();
@@ -43,8 +59,12 @@ function ListCard(props) {
         if (event.code === "Enter") {
             let id = event.target.id.substring("list-".length);
             store.changeListName(id, text);
+            
             toggleEdit();
         }
+
+        
+
     }
     function handleUpdateText(event) {
         setText(event.target.value );
@@ -71,6 +91,7 @@ function ListCard(props) {
                 {idNamePair.name}
             </span>
             <input
+                onClick = {showDeletePlaylist}
                 disabled={cardStatus}
                 type="button"
                 id={"delete-list-" + idNamePair._id}
