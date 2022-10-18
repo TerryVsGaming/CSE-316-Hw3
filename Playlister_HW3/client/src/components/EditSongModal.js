@@ -22,7 +22,7 @@ const { store } = useContext(GlobalStoreContext);
     //     let modal = document.getElementById("add-song-modal");
     //     modal.classList.remove("is-visible");
     // }
-//
+///
     function saveSongChanges (){
         let title = document.getElementById("edit-song-title");
         let artist = document.getElementById("edit-song-artist");
